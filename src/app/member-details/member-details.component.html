@@ -1,0 +1,45 @@
+<div>
+  <!-- <h3 class="text-center lead">Add Member to Racing Team</h3> -->
+  <br />
+  <!--Template Driven Form or Model Driven Form?-->
+  <form [formGroup]="memberDetailsForm" (ngSubmit)="onSubmit()">
+    <div>
+      <div class="row">
+        <div class="col-md-6">
+          <input type="text" class="form-control" formControlName="firstName" id="firstName" placeholder="First Name" />
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" formControlName="lastName" id="lastName" placeholder="Last Name" />
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-6">
+          <input formControlName="jobTitle" type="text" class="form-control" id="jobTitle" placeholder="Job Title" />
+        </div>
+        <!--We may have to make a service call to get this list-->
+        <div class="col-md-6">
+          <select id="team" formControlName="rteam" class="form-control">
+            <option *ngFor="let team of teams" [value]="team.id">{{team.teamName}}</option>
+          </select>
+        </div>
+      </div>
+      <br />
+      <div class="form-group col-md-6">
+        <div class="row">
+          <label id="activeStatus" class="md-check lead">
+            <input formControlName="status" type="radio" /> Active 
+          </label>
+          <label class="md-check lead">
+            <input formControlName="status" type="radio" /> Inactive
+          </label>
+        </div>
+      </div>
+    </div>
+    <!--Disable if form is invalid-->
+
+    <!-- <button type="submit" (click)="SaveMember()" class="btn btn-primary pull-right">
+      Save Member
+    </button> -->
+  </form>
+</div>
